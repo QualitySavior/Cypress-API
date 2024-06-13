@@ -1,0 +1,49 @@
+The custom commands can be used through the following command:
+Cypress.Commands.add("login", (username, password) => {
+  cy.get("#username").type(username);
+  cy.get("#password").type(password);
+  cy.get("#login").click();
+});
+===============================================================================================================================================================================================================================
+How will you define preserve cookies?
+describe('my test', () => {
+beforeEach(() => {
+Cypress.Cookies.preserveOnce('session_id', 'remember_token')
+});
+it('test1', () => {
+//Some code to test
+});
+it('test2', () => {
+//Some code to test
+});
+it('test3', () => {
+//Some code to test
+});
+})
+===============================================================================================================================================================================================================================
+Start from https://www.youtube.com/watch?v=kdXmNTjYVUo&list=PLUDwpEzHYYLtoD-O_KzRrLngmEG7BBb1n&index=3
+https://transform.tools/json-to-json-schema
+https://jsonpathfinder.com/
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Process for --- Authentications - OAuth 2.0 Authentication-GitHub App ---
+
+Create "GitHub Token" - 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
+Create "AOuth App" --> Client ID - 7bfe2cb485ba8c2cad6e & Client secret - f453ca5de61766bcd6870dee3ffdb4427fcaed0c
+
+Enter the URL "https://github.com/login/oauth/authorize?client_id=7bfe2cb485ba8c2cad6e" - To get Authorization Code -  <--- Change client id as per the app you create
+Now,Copy the Authorization code: code=9ac1f3488205d7603de8 you got in the URL<--- It gets expires very soon - Create new everytime
+
+To get the token: send POST request from postman
+https://github.com/login/oauth/access_token <--- Provide the three things:
+  1. client_id
+  2. client_secret
+  3. code
+
+You will get this:
+access_token=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&scope=&token_type=bearer <--- Response from the postman
+
+Now, you can use that access token for further purpose
+
+Now, Client App will send the request to Resource Server along with the token, RS will valid the same from Auth Server
+===============================================================================================================================================================================================================================
+
